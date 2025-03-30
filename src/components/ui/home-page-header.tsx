@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Card } from './card';
+import ContentContainer from './content-container';
 
 interface HomePageHeaderProps {
   sections: HomePageSection[];
@@ -42,8 +43,8 @@ export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <ContentContainer>
+      <div className="flex items-center justify-between h-16">
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {sections.map((section: HomePageSection) => (
@@ -110,7 +111,7 @@ export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </ContentContainer>
     </header>
   );
 }
