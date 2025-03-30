@@ -1,5 +1,6 @@
 import { HomePageSection } from "@/types/home-page-section"
 import { TypewriterText } from '@/components/ui/typewriter-text';
+import { TextAccentWrapper } from "@/components/ui/text-accent-wrapper";
 
 const sectonLayoutClass = "text-left w-full px-2"
 export const sections: HomePageSection[] = [
@@ -21,9 +22,17 @@ export const sections: HomePageSection[] = [
     content: (
       <div className={sectonLayoutClass}>
         <h2 className="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
-        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
-          I'm a full stack developer with a strong backend focus, experienced in building scalable web apps using TypeScript, Next.js, PostgreSQL, and Oracle. I enjoy solving complex problems, designing clean APIs, and working deep in the data layer. Lately, I’ve been diving into Go to sharpen my backend skills and prepare for building even more performant systems. Outside of web dev, I create games in Godot and Unity, blending solid architecture with creative gameplay design.
-        </p>
+        <div className="flex flex-col gap-4">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+            I'm a full stack developer with a strong backend focus, experienced in building scalable web apps using <TextAccentWrapper>TypeScript</TextAccentWrapper>, <TextAccentWrapper>Next.js</TextAccentWrapper>, <TextAccentWrapper>PostgreSQL</TextAccentWrapper>, and <TextAccentWrapper>Oracle</TextAccentWrapper>. I enjoy solving complex problems, designing clean APIs, and working deep in the data layer.
+          </p>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+            Lately, I’ve been diving into <TextAccentWrapper>Go</TextAccentWrapper> to sharpen my backend skills and prepare for building even more performant systems.
+          </p>
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+            Outside of web dev, I create games in <TextAccentWrapper>Godot</TextAccentWrapper> and <TextAccentWrapper>Unity</TextAccentWrapper>.
+          </p>
+        </div>
       </div>
     ),
   },
