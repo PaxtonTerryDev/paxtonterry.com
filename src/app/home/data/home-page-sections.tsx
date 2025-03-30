@@ -1,14 +1,15 @@
 import { HomePageSection } from "@/types/home-page-section"
+import { TypewriterText } from '@/components/ui/typewriter-text';
 
 export const sections: HomePageSection[] = [
     {
       id: "home",
       title: "Home",
       content: (
-        <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My Portfolio</h1>
+        <div className="text-left w-full">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Paxton Terry</h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-            I'm a software developer passionate about creating amazing web experiences
+            <TypewriterText cursorTextOptions={["software", "web", "game", "systems"]} suffixText=" developer" className="text-4xl md:text-6xl text-black dark:text-white"/>
           </p>
         </div>
       ),

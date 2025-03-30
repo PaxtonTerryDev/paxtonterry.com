@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './button';
-import { HelpCircleIcon } from 'lucide-react';
+import { HelpCircleIcon, X } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from './card';
 
 export function NavigationTooltip() {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,9 +44,9 @@ export function NavigationTooltip() {
 
   return (
     <div>
-        <Button variant="outline" size="icon" onClick={() => setIsVisible(true)}>
-            <HelpCircleIcon className="h-4 w-4" />
-        </Button>
+      <Button variant="outline" size="icon" onClick={() => setIsVisible(true)}>
+        <HelpCircleIcon className="h-4 w-4" />
+      </Button>
 
       <AnimatePresence>
         {isVisible && (
@@ -55,28 +56,26 @@ export function NavigationTooltip() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-16 right-0 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4"
+            className="absolute bottom-16 right-0 w-64"
           >
-            <div className="flex flex-col space-y-3">
-              <div className="flex justify-between items-start">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-                  Navigation Guide
-                </h3>
-                <button
+            <Card className="bg-background/80 backdrop-blur-sm border-border/50">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-semibold">Navigation Guide</CardTitle>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-4 w-4"
                   onClick={() => setIsVisible(false)}
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </button>
-              </div>
-              <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <X className="h-3 w-3" />
+                </Button>
+              </CardHeader>
+              <CardContent className="space-y-2 text-sm text-muted-foreground">
                 <p>• Use arrow keys or mouse wheel to navigate between sections</p>
                 <p>• Click on the navigation links at the top to jump to specific sections</p>
                 <p>• On mobile, swipe up or down to navigate</p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           </motion.div>
         )}
       </AnimatePresence>
