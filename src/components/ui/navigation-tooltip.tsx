@@ -20,7 +20,8 @@ export function NavigationTooltip() {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      if (tooltipRef.current && !tooltipRef.current.contains(target) && !(target as Element).closest('button')) {
         setIsVisible(false);
       }
     };
@@ -36,6 +37,8 @@ export function NavigationTooltip() {
       document.addEventListener('keydown', handleKeyDown);
     }
 
+    console.log("isVisible", isVisible);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
@@ -44,7 +47,14 @@ export function NavigationTooltip() {
 
   return (
     <div>
-      <Button variant="outline" size="icon" onClick={() => setIsVisible(true)}>
+      <Button 
+        variant="outline" 
+        size="icon" 
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsVisible(!isVisible);
+        }}
+      >
         <HelpCircleIcon className="h-4 w-4" />
       </Button>
 
