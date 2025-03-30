@@ -1,13 +1,14 @@
 import { HomePageSection } from "@/types/home-page-section"
 import { TypewriterText } from '@/components/ui/typewriter-text';
 
+const sectonLayoutClass = "text-left w-full px-2"
 export const sections: HomePageSection[] = [
     {
       id: "home",
       title: "Home",
       content: (
-        <div className="text-left w-full">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-rose-600">Paxton Terry</h1>
+        <div className={sectonLayoutClass}>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-emerald-600">Paxton Terry</h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
             <TypewriterText cursorTextOptions={["software", "web", "game", "systems"]} suffixText=" developer" className="text-4xl md:text-6xl text-black dark:text-white"/>
           </p>
@@ -18,7 +19,7 @@ export const sections: HomePageSection[] = [
       id: "about",
       title: "About",
       content: (
-        <div className="text-center max-w-2xl mx-auto px-4">
+        <div className={sectonLayoutClass}>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
             I'm a software developer with expertise in modern web technologies.
@@ -32,7 +33,7 @@ export const sections: HomePageSection[] = [
       id: "projects",
       title: "Projects",
       content: (
-        <div className="text-center max-w-4xl mx-auto px-4">
+        <div className={sectonLayoutClass}>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Project cards will go here */}
@@ -52,7 +53,7 @@ export const sections: HomePageSection[] = [
       id: "blog",
       title: "Blog",
       content: (
-        <div className="text-center max-w-4xl mx-auto px-4">
+        <div className={sectonLayoutClass}>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Latest Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Blog post cards will go here */}
@@ -72,7 +73,7 @@ export const sections: HomePageSection[] = [
       id: "contact",
       title: "Contact",
       content: (
-        <div className="text-center max-w-2xl mx-auto px-4">
+        <div className={sectonLayoutClass}>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">Get in Touch</h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
             I'm always interested in hearing about new projects and opportunities.
