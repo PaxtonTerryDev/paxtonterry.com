@@ -1,14 +1,14 @@
 'use client';
 import { FullScreenSlider } from "@/components/ui/full-screen-slider";
 import { HomePageHeader } from "@/components/ui/home-page-header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const sections = [
     {
-      id: "welcome",
-      title: "Welcome",
+      id: "home",
+      title: "Home",
       content: (
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My Portfolio</h1>
@@ -92,10 +92,85 @@ export default function Home() {
     },
   ];
 
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        const nextSection = (currentSection + 1) % sections.length;
+        setCurrentSection(nextSection);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        const nextSection = (currentSection - 1 + sections.length) % sections.length;
+        setCurrentSection(nextSection);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sections.length]);
+
+  // Handle wheel navigation
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrolling) return; // Prevent multiple scrolls while animation is in progress
+
+      const delta = e.deltaY;
+      if (Math.abs(delta) > 50) { // Minimum scroll threshold
+        setIsScrolling(true);
+        if (delta > 0) {
+          setCurrentSection((currentSection + 1) % sections.length);
+        } else {
+          setCurrentSection((currentSection - 1 + sections.length) % sections.length);
+        }
+        // Reset scrolling state after animation
+        setTimeout(() => {
+          setIsScrolling(false);
+        }, 500); // Match this with the animation duration
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [sections.length, isScrolling]);
+
+  // Handle scroll navigation
+  useEffect(() => {
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY - touchEndY;
+
+      if (Math.abs(diff) > 50) { // Minimum swipe distance
+        if (diff > 0) {
+          const nextSection = (currentSection + 1) % sections.length;
+          setCurrentSection(nextSection);
+        } else {
+          const nextSection = (currentSection - 1 + sections.length) % sections.length;
+          setCurrentSection(nextSection);
+        }
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [sections.length]);
+
+
   return (
     <div className="min-h-screen flex flex-col">
           <HomePageHeader />
-          <FullScreenSlider sections={sections} currentSection={currentSection} setCurrentSection={setCurrentSection} />
+          <FullScreenSlider sections={sections} currentSection={currentSection} />
     </div>
   );
 }
