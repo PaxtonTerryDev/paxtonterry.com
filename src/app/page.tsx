@@ -1,6 +1,10 @@
+'use client';
 import { FullScreenSlider } from "@/components/ui/full-screen-slider";
+import { HomePageHeader } from "@/components/ui/home-page-header";
+import { useState } from "react";
 
 export default function Home() {
+  const [currentSection, setCurrentSection] = useState<number>(0);
   const sections = [
     {
       id: "welcome",
@@ -89,8 +93,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
-      <FullScreenSlider sections={sections} />
+    <div className="min-h-screen flex flex-col">
+          <HomePageHeader />
+          <FullScreenSlider sections={sections} currentSection={currentSection} setCurrentSection={setCurrentSection} />
     </div>
   );
 }
