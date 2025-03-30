@@ -68,7 +68,7 @@ export function TypewriterText({
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, [wordIndex]);
+  }, [cursorTextOptions, finishedWordDelay, letterTypeTime, wordIndex]);
 
   return (
     <span className={className}>

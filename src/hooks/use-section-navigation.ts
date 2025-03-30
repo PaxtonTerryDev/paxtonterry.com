@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { HomePageSection } from '@/types/home-page-section';
 
 interface UseSectionNavigationProps {
@@ -10,19 +10,22 @@ export function useSectionNavigation({ sections, animationDuration = 500 }: UseS
   const [currentSectionId, setCurrentSectionId] = useState(sections[0].id);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  const getCurrentIndex = () => sections.findIndex(section => section.id === currentSectionId);
+  const getCurrentIndex = useCallback(() => 
+    sections.findIndex(section => section.id === currentSectionId),
+    [sections, currentSectionId]
+  );
 
-  const goToNextSection = () => {
+  const goToNextSection = useCallback(() => {
     const currentIndex = getCurrentIndex();
     const nextIndex = (currentIndex + 1) % sections.length;
     setCurrentSectionId(sections[nextIndex].id);
-  };
+  }, [sections, getCurrentIndex]);
 
-  const goToPreviousSection = () => {
+  const goToPreviousSection = useCallback(() => {
     const currentIndex = getCurrentIndex();
     const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
     setCurrentSectionId(sections[prevIndex].id);
-  };
+  }, [sections, getCurrentIndex]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -35,7 +38,7 @@ export function useSectionNavigation({ sections, animationDuration = 500 }: UseS
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [sections, currentSectionId]);
+  }, [sections, currentSectionId, goToNextSection, goToPreviousSection]);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -57,7 +60,7 @@ export function useSectionNavigation({ sections, animationDuration = 500 }: UseS
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [sections, currentSectionId, isScrolling, animationDuration]);
+  }, [sections, currentSectionId, isScrolling, animationDuration, goToNextSection, goToPreviousSection]);
 
   useEffect(() => {
     let touchStartY = 0;
@@ -86,7 +89,7 @@ export function useSectionNavigation({ sections, animationDuration = 500 }: UseS
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [sections, currentSectionId]);
+  }, [sections, currentSectionId, goToNextSection, goToPreviousSection]);
 
   return {
     currentSectionId,

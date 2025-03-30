@@ -24,7 +24,7 @@ export const sections: HomePageSection[] = [
         <h2 className="text-3xl md:text-5xl font-bold mb-6">About Me</h2>
         <div className="flex flex-col gap-4">
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
-            I'm a full stack developer with a strong backend focus, experienced in building scalable web apps using <TextAccentWrapper>TypeScript</TextAccentWrapper>, <TextAccentWrapper>Next.js</TextAccentWrapper>, <TextAccentWrapper>PostgreSQL</TextAccentWrapper>, and <TextAccentWrapper>Oracle</TextAccentWrapper>. I enjoy solving complex problems, designing clean APIs, and working deep in the data layer.
+            I&apos;m a full stack developer with a strong backend focus, experienced in building scalable web apps using <TextAccentWrapper>TypeScript</TextAccentWrapper>, <TextAccentWrapper>Next.js</TextAccentWrapper>, <TextAccentWrapper>PostgreSQL</TextAccentWrapper>, and <TextAccentWrapper>Oracle</TextAccentWrapper>. I enjoy solving complex problems, designing clean APIs, and working deep in the data layer.
           </p>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
             Lately, I’ve been diving into <TextAccentWrapper>Go</TextAccentWrapper> to sharpen my backend skills and prepare for building even more performant systems.
@@ -82,7 +82,7 @@ export const sections: HomePageSection[] = [
       <div className={sectonLayoutClass}>
         <h2 className="text-3xl md:text-5xl font-bold mb-6">Get in Touch</h2>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
-          I'm always interested in hearing about new projects and opportunities.
+          I&apos;m always interested in hearing about new projects and opportunities.
         </p>
         <a
           href="mailto:your.email@example.com"

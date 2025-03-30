@@ -6,7 +6,6 @@ import { Card, CardHeader, CardTitle, CardContent } from './card';
 
 export function NavigationTooltip() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasSeenBefore, setHasSeenBefore] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ export function NavigationTooltip() {
     if (!hasSeenTooltip) {
       setIsVisible(true);
       localStorage.setItem('hasSeenNavigationTooltip', 'true');
-      setHasSeenBefore(true);
     }
   }, []);
 

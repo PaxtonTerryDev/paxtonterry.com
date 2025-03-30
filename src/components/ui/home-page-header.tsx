@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { HomePageSection } from '@/types/home-page-section';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
