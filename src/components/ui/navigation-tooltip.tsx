@@ -37,8 +37,6 @@ export function NavigationTooltip() {
       document.addEventListener('keydown', handleKeyDown);
     }
 
-    console.log("isVisible", isVisible);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
