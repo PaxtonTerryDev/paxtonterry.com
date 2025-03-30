@@ -37,18 +37,16 @@ export function TypewriterText({
     let i = 0;
     let current = '';
 
-    // Clear display immediately
     setDisplayText('');
 
     intervalRef.current = setInterval(() => {
       if (i < word.length) {
-        current += word[i];      // local string builder
-        setDisplayText(current); // safely update state
+        current += word[i];     
+        setDisplayText(current); 
         i++;
       } else {
         clearInterval(intervalRef.current!);
 
-        // Wait, then delete
         timeoutRef.current = setTimeout(() => {
           let j = word.length;
 

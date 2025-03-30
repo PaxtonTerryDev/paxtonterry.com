@@ -7,7 +7,7 @@ export const sections: HomePageSection[] = [
       title: "Home",
       content: (
         <div className="text-left w-full">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Paxton Terry</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-rose-600">Paxton Terry</h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
             <TypewriterText cursorTextOptions={["software", "web", "game", "systems"]} suffixText=" developer" className="text-4xl md:text-6xl text-black dark:text-white"/>
           </p>
