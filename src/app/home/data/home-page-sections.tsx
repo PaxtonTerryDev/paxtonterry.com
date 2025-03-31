@@ -1,8 +1,13 @@
 import { HomePageSection } from "@/types/home-page-section";
 import { TypewriterText } from "@/components/ui/typewriter-text";
 import { TextAccentWrapper } from "@/components/ui/text-accent-wrapper";
-import ProjectCard from "@/components/ui/project-card";
-import { testProject } from "./projects";
+import {
+  testProject,
+  testProject2,
+  testProject3,
+  testProject4,
+} from "./projects";
+import ProjectsSection from "../components/projects-section";
 
 const sectonLayoutClass = "text-left w-full px-2";
 export const sections: HomePageSection[] = [
@@ -59,19 +64,9 @@ export const sections: HomePageSection[] = [
     id: "projects",
     title: "Projects",
     content: (
-      <div className={sectonLayoutClass}>
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Project cards will go here */}
-          <ProjectCard project={testProject} />
-          <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold mb-2">Project 2</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Description of project 2
-            </p>
-          </div>
-        </div>
-      </div>
+      <ProjectsSection
+        projects={[testProject, testProject2, testProject3, testProject4]}
+      />
     ),
   },
   {
