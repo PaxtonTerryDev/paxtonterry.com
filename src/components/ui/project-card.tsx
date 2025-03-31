@@ -43,7 +43,9 @@ export default function ProjectCard({ project }: ComponentProps) {
             );
           })}
         </div>
-        <CardDescription>{description.short}</CardDescription>
+        <CardDescription className="flex md:hidden">
+          {description.short}
+        </CardDescription>
       </CardHeader>
       <CardContent className="hidden md:flex">
         <p>{description.long}</p>
