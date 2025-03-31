@@ -5,8 +5,8 @@ export interface Project {
   title: string;
   description: ProjectDescription;
   languages: ProgrammingLanguage[];
-  githubUrl: ProjectLinkButton;
-  deploymentUrl?: ProjectLinkButton;
+  githubUrl: ProjectLink;
+  deploymentUrl?: ProjectLink;
 }
 
 interface ProjectDescription {
@@ -14,7 +14,7 @@ interface ProjectDescription {
   long: string;
 }
 
-interface ProjectLinkButton {
+export interface ProjectLink {
   label: string;
   href: string;
 }
