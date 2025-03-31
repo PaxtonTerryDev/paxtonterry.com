@@ -15,13 +15,10 @@ const badgeVariants = cva(
           "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
         destructive:
           "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        typescript:
-          "border-transparent bg-blue-500 text-white [a&]:hover:bg-blue-500/90 focus-visible:ring-blue-500/20 dark:focus-visible:ring-blue-500/40 dark:bg-blue-500/60",
-        postgres:
-          "border-transparent bg-blue-700 text-white [a&]:hover:bg-blue-700/90 focus-visible:ring-blue-700/20 dark:focus-visible:ring-blue-700/40 dark:bg-blue-700/60",
-        oracle:
-          "border-transparent bg-red-300 text-white [a&]:hover:bg-red-300/90 focus-visible:ring-red-300/20 dark:focus-visible:ring-red-300/40 dark:bg-red-300/60",
-        go: "border-transparent bg-blue-200 text-white [a&]:hover:bg-blue-200/90 focus-visible:ring-blue-200/20 dark:focus-visible:ring-blue-200/40 dark:bg-blue-200/60",
+        typescript: "bg-transparent border-blue-500 hover:bg-blue-500/10",
+        postgres: "bg-transparent border-blue-700 hover:bg-blue-700/10",
+        oracle: "bg-transparent border-red-500 hover:bg-red-500/10",
+        go: "bg-transparent border-blue-200 hover:bg-blue-200/10",
         outline:
           "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         next: "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",

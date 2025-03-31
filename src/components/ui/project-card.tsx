@@ -1,5 +1,6 @@
 import {
   LanguageLabel,
+  LanguageLogo,
   LanguageToBadgeVariant,
   Project,
 } from "@/types/project";
@@ -23,24 +24,19 @@ export default function ProjectCard({ project }: ComponentProps) {
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="gap-2">
         <CardTitle>{title}</CardTitle>
-        <div className="flex flex-row gap-2 bg-blue">
+        <div className="flex flex-row gap-2">
           {languages.map((language) => {
             return (
-              <Badge key={language} variant={LanguageToBadgeVariant[language]}>
+              <Badge
+                key={language}
+                variant={LanguageToBadgeVariant[language]}
+                className="cursor-pointer"
+                onClick={() => console.log(LanguageLabel[language])}
+              >
                 <div className="flex gap-1 items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 32 20"
-                    className="w-4 h-auto" // or use h-4 w-auto depending on layout direction
-                    preserveAspectRatio="xMidYMid meet"
-                    fill="none"
-                    stroke="#C74634"
-                    strokeWidth="4"
-                  >
-                    <path d="m10,2a8,8 0 1,0 0,16h12a8,8 0 1,0 0-16z" />
-                  </svg>
+                  {/* {LanguageLogo[language]} */}
                   {LanguageLabel[language]}
                 </div>
               </Badge>
