@@ -19,6 +19,8 @@ interface ComponentProps {
   project: Project;
 }
 
+// TODO - BUG - badges don't wrap on mobile, run off the side of the screen.
+
 export default function ProjectCard({ project }: ComponentProps) {
   const { title, description, languages, githubUrl, deploymentUrl } = project;
 
