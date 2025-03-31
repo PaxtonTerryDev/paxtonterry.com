@@ -63,11 +63,7 @@ export const sections: HomePageSection[] = [
   {
     id: "projects",
     title: "Projects",
-    content: (
-      <ProjectsSection
-        projects={[testProject, testProject2, testProject3, testProject4]}
-      />
-    ),
+    content: <ProjectsSection projects={[testProject, testProject2]} />,
   },
   {
     id: "blog",
