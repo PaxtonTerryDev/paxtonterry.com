@@ -1,6 +1,5 @@
 import {
   LanguageLabel,
-  LanguageLogo,
   LanguageToBadgeVariant,
   Project,
 } from "@/types/project";
@@ -12,18 +11,19 @@ import {
   CardHeader,
   CardTitle,
 } from "./card";
-import Image from "next/image";
 import { Badge } from "./badge";
+import { buttonVariants } from "./button";
+import Link from "next/link";
 
 interface ComponentProps {
   project: Project;
 }
 
 export default function ProjectCard({ project }: ComponentProps) {
-  const { title, description, languages, githubUrl, deploymentURL } = project;
+  const { title, description, languages, githubUrl, deploymentUrl } = project;
 
   return (
-    <Card>
+    <Card className="py-3 md:py-6">
       <CardHeader className="gap-2">
         <CardTitle>{title}</CardTitle>
         <div className="flex flex-row gap-2">
@@ -45,12 +45,33 @@ export default function ProjectCard({ project }: ComponentProps) {
         </div>
         <CardDescription>{description.short}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="hidden md:flex">
         <p>{description.long}</p>
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
+      <CardFooter className="gap-2">
+        <ProjectLinkButton href={githubUrl.href}>
+          {githubUrl.label}
+        </ProjectLinkButton>
+        {deploymentUrl && (
+          <ProjectLinkButton href={deploymentUrl.href}>
+            {deploymentUrl.label}
+          </ProjectLinkButton>
+        )}
       </CardFooter>
     </Card>
+  );
+}
+
+function ProjectLinkButton({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} className={buttonVariants({ variant: "outline" })}>
+      {children}
+    </Link>
   );
 }
