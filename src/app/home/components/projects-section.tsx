@@ -10,7 +10,7 @@ export default function ProjectsSection({ projects }: ComponentProps) {
   return (
     <div className="text-left w-full px-2">
       <h2 className="text-3xl md:text-5xl font-bold mb-6">Major Projects</h2>
-      <div className="text-xl md:text-xl font-extralight mb-6">
+      <div className="text-xl md:text-xl font-extralight mb-6 hidden md:flex">
         These are a couple of the larger projects I have built. Other smaller
         projects and scripts can be found on my Github
       </div>
