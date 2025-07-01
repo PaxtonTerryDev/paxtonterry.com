@@ -1,9 +1,9 @@
-import { HomePageSection } from '@/types/home-page-section';
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { Card } from './card';
-import ContentContainer from './content-container';
+import { HomePageSection } from "@/types/home-page-section";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { Card } from "./card";
+import ContentContainer from "./content-container";
 
 interface HomePageHeaderProps {
   sections: HomePageSection[];
@@ -11,11 +11,17 @@ interface HomePageHeaderProps {
   setCurrentSectionId: (id: string) => void;
 }
 
-export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId }: HomePageHeaderProps) {
+export function HomePageHeader({
+  sections,
+  currentSectionId,
+  setCurrentSectionId,
+}: HomePageHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const currentSection = sections.find(section => section.id === currentSectionId);
+  const currentSection = sections.find(
+    (section) => section.id === currentSectionId
+  );
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -25,30 +31,30 @@ export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId
     };
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setIsMenuOpen(false);
       }
     };
 
     if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md">
       <ContentContainer>
-      <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {sections.map((section: HomePageSection) => (
-              <HeaderLink 
+              <HeaderLink
                 key={section.id}
                 isSelected={section.id === currentSectionId}
                 onClick={() => setCurrentSectionId(section.id)}
@@ -65,7 +71,11 @@ export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId
               className="p-2 rounded-md text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
             <AnimatePresence mode="wait">
               <motion.h1
@@ -88,7 +98,7 @@ export function HomePageHeader({ sections, currentSectionId, setCurrentSectionId
             <motion.div
               ref={menuRef}
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mt-2"
             >
@@ -127,9 +137,9 @@ function HeaderLink({ children, isSelected, onClick }: HeaderLinkProps) {
     <div
       onClick={onClick}
       className={`transition-colors cursor-pointer ${
-        isSelected 
-          ? 'text-gray-900 dark:text-white font-semibold' 
-          : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+        isSelected
+          ? "text-gray-900 dark:text-white font-semibold"
+          : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
       }`}
     >
       {children}
@@ -142,9 +152,9 @@ function MobileHeaderLink({ children, isSelected, onClick }: HeaderLinkProps) {
     <div
       onClick={onClick}
       className={`px-4 py-2 transition-colors cursor-pointer ${
-        isSelected 
-          ? 'bg-accent text-accent-foreground font-semibold' 
-          : 'text-muted-foreground hover:bg-accent/50'
+        isSelected
+          ? "bg-accent text-accent-foreground font-semibold"
+          : "text-muted-foreground hover:bg-accent/50"
       }`}
     >
       {children}
