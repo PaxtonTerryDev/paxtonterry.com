@@ -6,6 +6,7 @@ import {
   testProject2,
   testProject3,
   testProject4,
+  testProject5,
 } from "./projects";
 import ProjectsSection from "../components/projects-section";
 
@@ -63,7 +64,17 @@ export const sections: HomePageSection[] = [
   {
     id: "projects",
     title: "Projects",
-    content: <ProjectsSection projects={[testProject, testProject2]} />,
+    content: (
+      <ProjectsSection
+        projects={[
+          testProject,
+          testProject2,
+          testProject3,
+          testProject4,
+          testProject5,
+        ]}
+      />
+    ),
   },
   {
     id: "blog",
