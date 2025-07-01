@@ -81,3 +81,24 @@ export const testProject4: Project = {
     href: "https://portfolio.example.com",
   },
 };
+
+export const testProject5: Project = {
+  title: "Portfolio v3",
+  description: {
+    short: "A redesign of my personal portfolio using modern web stacks.",
+    long: "This is the second iteration of my personal portfolio site. It's built with Next.js, TailwindCSS, and a PostgreSQL backend for project and blog content. It also includes a light/dark mode toggle and dynamic filtering of portfolio items by tag.",
+  },
+  languages: [
+    ProgrammingLanguage.NextJS,
+    ProgrammingLanguage.Typescript,
+    ProgrammingLanguage.PostgreSQL,
+  ],
+  githubUrl: {
+    label: "GitHub",
+    href: "https://github.com/example/portfolio-v2",
+  },
+  deploymentUrl: {
+    label: "Live Site",
+    href: "https://portfolio.example.com",
+  },
+};

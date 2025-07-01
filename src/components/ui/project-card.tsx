@@ -3,14 +3,7 @@ import {
   LanguageToBadgeVariant,
   Project,
 } from "@/types/project";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./card";
 import { Badge } from "./badge";
 import { buttonVariants } from "./button";
 import Link from "next/link";
@@ -19,24 +12,17 @@ interface ComponentProps {
   project: Project;
 }
 
-// TODO - BUG - badges don't wrap on mobile, run off the side of the screen.
-
 export default function ProjectCard({ project }: ComponentProps) {
   const { title, description, languages, githubUrl, deploymentUrl } = project;
 
   return (
-    <Card className="py-3 md:py-6">
-      <CardHeader className="gap-2">
+    <Card className="py-3 md:py-6 flex flex-col min-w-80 max-w-xl aspect-square select-none">
+      <CardHeader className="gap-2 mt-2">
         <CardTitle>{title}</CardTitle>
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-wrap gap-2">
           {languages.map((language) => {
             return (
-              <Badge
-                key={language}
-                variant={LanguageToBadgeVariant[language]}
-                className="cursor-pointer"
-                onClick={() => console.log(LanguageLabel[language])}
-              >
+              <Badge key={language} variant={LanguageToBadgeVariant[language]}>
                 <div className="flex gap-1 items-center">
                   {/* {LanguageLogo[language]} */}
                   {LanguageLabel[language]}
@@ -45,11 +31,8 @@ export default function ProjectCard({ project }: ComponentProps) {
             );
           })}
         </div>
-        <CardDescription className="flex md:hidden">
-          {description.short}
-        </CardDescription>
       </CardHeader>
-      <CardContent className="hidden md:flex">
+      <CardContent className="flex flex-grow overflow-ellipsis">
         <p>{description.long}</p>
       </CardContent>
       <CardFooter className="gap-2">
